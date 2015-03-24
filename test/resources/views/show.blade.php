@@ -4,7 +4,7 @@
 
     <div >
 
-    <h1><i class="fa fa-users"></i> Articles</h1>
+    <h1><i class="fa fa-users"></i> Article</h1>
        <table class="table" class="table-bordered" class="table-responsive">
 
             <thead>
@@ -17,7 +17,7 @@
                 </tr>
             </thead>
 
-                @foreach($articles as $article)
+                
                     <div class="col-md-12">
                             <tr>
                                 <td class="info">
@@ -32,26 +32,12 @@
                                 <td>
                                     {{ $article->created_at->format('F d, Y h:ia') }}
                                 </td>
-                                <td class="active">
-                                    {!! Form::open(['route' => ['article.edit', $article->id], 'method' => 'GET' ]) !!}
-                                    {!! Form::submit('Edit', ['class' => 'btn btn-primary']) !!}
-                                    {!! Form::close() !!}
-                                    
-                                </td>
-                                <td class="active">                        
-                                    {!! Form::open(['route' => ['article.destroy', $article->id], 'method' => 'DELETE']) !!}
-                                    {!! Form::submit('DELETE', ['class' => 'btn btn-danger']) !!}
-                                    {!! Form::close() !!}
-                                </td>
                             </tr>
                         
                     </div>
-                @endforeach    
+                   
         </table>
-        <a href="{{ route('article.create')}}" class='btn btn-success'>Add new</a>
     </div> 
 
 
 @endsection
-
-                

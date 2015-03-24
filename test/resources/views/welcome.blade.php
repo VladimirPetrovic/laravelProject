@@ -10,7 +10,7 @@
 				padding: 0;
 				width: 100%;
 				height: 100%;
-				color: #B0BEC5;
+				color: black;
 				display: table;
 				font-weight: 100;
 				font-family: 'Lato';
@@ -40,8 +40,33 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Laravel 5</div>
-				<div class="quote">{{ Inspiring::quote() }}</div>
+				<table class="table" class="table-bordered" class="table-responsive" >
+
+            <thead>
+                 <tr>
+                 	<th>Username</th>
+                    <th>Title</th>
+                    <th>Date/Time Added</th>
+
+                <tr>
+            </thead>
+
+                @foreach($articles as $article)
+                    <div class="col-md-12">
+                    			<td class="info">
+                                    {{ $article->user->name }}
+                                </td>
+                                <td class="info" >
+                                    <a href="{{ route('article.show', $article->id)}}" style="color:black">{{ $article->title }}</a>
+                                </td>
+                                <td>
+                                    {{ $article->created_at->format('F d, Y h:ia') }}
+                                </td>
+                            </tr>
+                        
+                    </div>
+                @endforeach    
+        </table>
 			</div>
 		</div>
 	</body>

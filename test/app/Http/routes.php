@@ -11,22 +11,22 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'ArticleController@index');
+Route::get('home', 'HomeController@index');
 
 
-Route::resource('article', 'ArticleController@index');
+Route::resource('article', 'ArticleController');
 
-Route::get('article/create', ['as' =>'article.create', 'uses'=>'ArticleController@create']);
+// Route::get('article/create', ['as' =>'article.create', 'uses'=>'ArticleController@create']);
 
-Route::post('article/store', ['as' =>'article.store', 'uses'=>'ArticleController@store']);
+// Route::post('article/store', ['as' =>'article.store', 'uses'=>'ArticleController@store']);
 
-Route::delete('article/{article}/destroy', ['as' =>'article.destroy', 'uses'=>'ArticleController@destroy']);
+// Route::delete('article/{article}/destroy', ['as' =>'article.destroy', 'uses'=>'ArticleController@destroy']);
 
-Route::get('article/{article}/edit', ['as' =>'article.edit', 'uses'=>'ArticleController@edit']);
+// Route::get('article/{article}/edit', ['as' =>'article.edit', 'uses'=>'ArticleController@edit']);
 
-Route::put('article/{article}', ['as' =>'article.update', 'uses'=>'ArticleController@update']);
+// Route::put('article/{article}', ['as' =>'article.update', 'uses'=>'ArticleController@update']);
 
 
 
