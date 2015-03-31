@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\Article;
+use App\User;
 
 use Request;
 
@@ -16,7 +17,11 @@ class ArticleController extends Controller {
 	 */
 	public function index()
 	{
-		return view('article.index',['articles'=>Auth::user()->articles]);
+		//return User::all();
+		//return Article::all(); //ispisuje sve article kao string(json)
+		//return $article->title;
+		//dump(Article::all());
+		return view('article.index',['articles'=>Auth::user()->articles]); //->ispisuje sve artikle user-a
 	}
 
 	/**
@@ -100,4 +105,13 @@ class ArticleController extends Controller {
 		return redirect()->route('article.index');
 	}
 
+	function ajaxArticles()
+	{
+		return view('ajax-articles');
+	}
+
+	function ispisi()
+	{
+		return Article::all();
+	}
 }

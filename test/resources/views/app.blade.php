@@ -33,7 +33,9 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Home</a></li>
+					<li><a href="{{ url('/article') }}">Home</a></li>
+					<li><a href="{{ url('/ajax-articles') }}">JavaScript</a></li>
+					<li><a href="{{ url('/ispis') }}">Json</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

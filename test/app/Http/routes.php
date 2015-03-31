@@ -11,12 +11,17 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
 
 
+
 Route::resource('article', 'ArticleController');
+
+Route::get('ajax-articles', 'ArticleController@ajaxArticles');
+
+Route::get('ispis', 'ArticleController@ispisi');
 
 // Route::get('article/create', ['as' =>'article.create', 'uses'=>'ArticleController@create']);
 
