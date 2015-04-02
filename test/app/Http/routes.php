@@ -20,6 +20,9 @@ Route::get('home', 'HomeController@index');
 Route::resource('article', 'ArticleController');
 
 Route::get('ajax-articles', 'ArticleController@ajaxArticles');
+Route::put('ajax-articles/{id}', 'ArticleController@ajaxArticlesUpdate');
+Route::post('ajax-articles/store', 'ArticleController@ajaxArticlesStore');
+Route::delete('ajax-articles/{id}/delete', 'ArticleController@ajaxArticlesDelete');
 
 Route::get('ispis', 'ArticleController@ispisi');
 

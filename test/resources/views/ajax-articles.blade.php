@@ -71,8 +71,8 @@
 			 	<th>Title</th>
 			 	<th>Body</th>
 			 	<tr>
-					<td id="polje1">Polje1</td>
-					<td id="polje2">Polje2</td>
+					<td class="js-edit" id="polje-1">Polje1</td>
+					<td class="js-edit" id="polje-2">Polje2</td>
 			 	</tr>
 			 </table>
 

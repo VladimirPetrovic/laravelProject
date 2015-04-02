@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use App\Article;
 use App\User;
+use Input;
 
 use Request;
 
@@ -21,7 +22,7 @@ class ArticleController extends Controller {
 		//return Article::all(); //ispisuje sve article kao string(json)
 		//return $article->title;
 		//dump(Article::all());
-		return view('article.index',['articles'=>Auth::user()->articles]); //->ispisuje sve artikle user-a
+		return view('article.index',['articles'=>Auth::user()->articles, 'user'=>Auth::user()]); //->ispisuje sve artikle user-a
 	}
 
 	/**
@@ -43,7 +44,7 @@ class ArticleController extends Controller {
 	{
 		$inputs = Request::all();
         $inputs['user_id'] = Auth::user()->id;
-        $item = Article::create($inputs);
+        $article = Article::create($inputs);
        
        return redirect()->route('article.index');
 	}
@@ -83,8 +84,8 @@ class ArticleController extends Controller {
 	{
 		$inputs = Request::all();
         $inputs['user_id'] = Auth::user()->id;
-        $item =  Article::find($id);
-       	$item->update($inputs);
+        $article =  Article::find($id);
+       	$article->update($inputs);
        
        	return redirect()->route('article.index');
 
@@ -105,13 +106,44 @@ class ArticleController extends Controller {
 		return redirect()->route('article.index');
 	}
 
+	function ispisi()
+	{
+		return Article::all();
+	}
+
 	function ajaxArticles()
 	{
 		return view('ajax-articles');
 	}
 
-	function ispisi()
+	function ajaxArticlesUpdate($id)
 	{
-		return Article::all();
+		$article = Article::find($id);
+		return $article;
 	}
+
+	function ajaxArticlesStore()
+	{
+		$inputs = Input::all();
+
+		if(Request::ajax()){
+
+			$inputs['user_id'] = Auth::user()->id;
+        	$article = Article::create($inputs);
+		}
+		return $article;
+	}
+
+	function ajaxArticlesDelete($id)
+	{
+		$article = Article::findOrFail($id);
+
+		if(Request::ajax()){
+
+			$article->delete();
+
+		}
+		return $id;
+	}
+
 }
