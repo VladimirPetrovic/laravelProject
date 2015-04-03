@@ -34,6 +34,11 @@
 		$('.js-menjaj-poz').on('mouseleave', function(){
 			$('.js-menjaj-poz').css('background-color', 'white')
 		})
+//////////////////////////////////////////////////
+/*               MAGNIFIC POP UP                */
+//////////////////////////////////////////////////
+
+		
 
 //////////////////////////////////////////////////
 /*                    KLASE                     */
@@ -187,7 +192,7 @@
 ///////////////////////////////////////////////////////
 
 		$('button#addnew').on('click', function(){
-			$('#inputi').html('<label> Title: </label> <input type="text" id="naslov"> <label> Body: </label> <textarea id="opis"></textarea> <button class="btn btn-default" id="posalji">Submit</button> <button id="sakrij" class="btn btn-default">Hide</button> ');
+			$('#inputi').html('<form><div class="form-group col-md-3"><label> Title: </label> <input type="text" id="naslov" class="form-control"><label> Body: </label> <textarea id="opis" class="form-control"></textarea><button class="btn btn-primary form" id="posalji">Submit</button> <button id="sakrij" class="btn btn-default">Hide</button></div></form>');
 				
 				$('#sakrij').on('click', function(){
 					$('#inputi').html('');

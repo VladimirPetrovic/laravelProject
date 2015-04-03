@@ -12,7 +12,7 @@
                     <th>Title</th>
                     <th>Description</th>
                     <th>Email</th>
-                    <th>Date/Time Added</th>
+                    <th>Date/Time Added/Updated</th>
 
                 </tr>
             </thead>
@@ -55,20 +55,23 @@
                     </div>
                 @endforeach    
         </table>
-        <button id="addnew" class="btn btn-success">Add new</button>
+        <button id="addnew" class="btn btn-success test-pop-up">Add new</button>
 
         <div id="inputi"></div>
 
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script type="text/javascript" src="assets/javascript/main.js"></script>
+        
     </div> 
 
-    <script type="text/javascript">
-        window._laravel_token = "{{{ csrf_token() }}}";
-        window._laravel_user = {!! $user->toJson() !!};
-    </script>
+    
 
 
 @endsection
 
-                
+
+@section('scripts')
+    <script type="text/javascript" src="assets/javascript/main.js"></script>      
+    <script type="text/javascript">
+        window._laravel_token = "{{{ csrf_token() }}}";
+        window._laravel_user = {!! $user->toJson() !!};
+    </script>      
+@endsection

@@ -150,5 +150,9 @@ class ArticleController extends Controller {
 		return $id;
 	}
 
+	function galerija(){
+		return view('article.galery');
+	}
+
 
 }

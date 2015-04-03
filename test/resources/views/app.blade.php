@@ -11,6 +11,8 @@
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
+	@yield('styles')
+
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -36,6 +38,7 @@
 					<li><a href="{{ url('/article') }}">Home</a></li>
 					<li><a href="{{ url('/ajax-articles') }}">JavaScript</a></li>
 					<li><a href="{{ url('/ispis') }}">Json</a></li>
+					<li><a href="{{ url('/galerija') }}">Galery</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -60,5 +63,7 @@
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+	@yield('scripts')
 </body>
 </html>
