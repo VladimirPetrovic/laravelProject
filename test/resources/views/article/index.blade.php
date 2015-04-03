@@ -19,18 +19,18 @@
 
                 @foreach($articles as $article)
                     <div class="col-md-12">
-                            <tr>
-                                <td class="info, js-edit" id="title" data-id-itema="{{ $article->id }}">
+                            <tr data-id-itema = "{{ $article->id }}" class="js-item-row">
+                                <td class="info js-title" >
                                     {{ $article->title }}
                                 </td>
-                                <td class="active, js-edit" id="body" data-id-itema="{{ $article->id }}">
+                                <td class="active js-body"  >
                                     {{ $article->body }}
                                 </td>
-                                <td class="active, " id="email" data-id-itema="{{ $article->id }}">
+                                <td class="active ">
                                     {{ $article->user->email }}
                                 </td>
-                                <td id="time" data-id-itema="{{ $article->id }}">
-                                    {{ $article->created_at}}
+                                <td class="js-time">
+                                    {{ $article->updated_at}}
                                 </td>
                                 <!-- <td class="active">
                                     {!! Form::open(['route' => ['article.edit', $article->id], 'method' => 'GET' ]) !!}
@@ -43,8 +43,12 @@
                                     {!! Form::submit('DELETE', ['class' => 'btn btn-danger']) !!}
                                     {!! Form::close() !!}
                                 </td> -->
+                                <td class="btn-save"  data-id-itema = "{{ $article->id }}">
+                                </td>
+                                <td class="btn-cancel">
+                                </td>
                                 <td>
-                                    <button class="btn btn-default" id="obrisi" data-id-itema="{{ $article->id }}">Obrisi</button>
+                                    <button class="btn btn-default js-obrisi" data-id-itema="{{ $article->id }}">Obrisi</button>
                                 </td>
                             </tr>
                         

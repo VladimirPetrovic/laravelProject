@@ -80,11 +80,12 @@
 	       	this.type = type;
    		}    
    		myDog = new Animal('Blacky', 'Dog');
-   		console.info(myDog.name);
+   		//console.info(myDog.name);
 
 ///////////////////////////////////////////////////////
 /*                      AJAX                         */
 ///////////////////////////////////////////////////////
+
 		$('button#callapi').on('click', function(event){
 
 			$.ajax({
@@ -109,16 +110,81 @@
 				});
 			});
 
-		$('body').on('dblclick', '.js-edit', function(evt){
+///////////////////////////////////////////////////////
+/*                  AJAX UPDATE                      */
+///////////////////////////////////////////////////////
+
+		$('body').on('dblclick', '.js-item-row', function(evt){
 
 			var $obj = $(this);
+			//console.log($obj);
 			var idItema = $obj.data("id-itema");
-			var tekst = $obj.html().trim();
+			var $opis = $obj.find('.js-body');
+			var $naslov = $obj.find('.js-title');
+			var $save = $obj.find('.btn-save');
+			var $cancel = $obj.find('.btn-cancel');
+			var $obrisi = $obj.find('.js-obrisi');
+			var $time = $obj.find('.js-time')
+			var tekstNaslova = $naslov.html().trim();
+			var tekstOpisa = $opis.html().trim();
+			$save.show();
+			$cancel.show();
+			//console.log(tekstNaslova);
 			//alert(idItema);
-			$obj.html('<input type="text" size="30" data-id-itema="' + idItema + '" id="tekst-' + idItema + '"><input type="button" value="Edit" data-id-itema="' + idItema + '" id="tekst-' + idItema + '">');
-			$('#tekst-'+idItema).val(tekst);
 
-		})
+			$naslov.html('<input type="text" size="30" data-id-itema="' + idItema + '" id="naslov-' + idItema + '" >');
+			$opis.html('<input type="text" size="30" data-id-itema="' + idItema + '" id="opis-' + idItema + '" >');
+				$('#naslov-'+idItema).val(tekstNaslova);
+				$('#opis-'+idItema).val(tekstOpisa);
+			$save.html('<button data-id-itema="'+idItema+'" id="sacuvaj-'+idItema+'" class="btn btn-primary">Save</button>');
+			$cancel.html('<button data-id-itema="'+idItema+'" id="ponisti-'+idItema+'" class="btn btn-danger">Cancel</button>');		
+			$obrisi.hide();
+
+			$('#ponisti-'+idItema).on('click', function(){
+				$obrisi.show();
+				$save.hide();
+				$cancel.hide();
+				$naslov.html(tekstNaslova);
+				//console.log($naslov);
+				$opis.html(tekstOpisa);
+			})
+
+			$('#sacuvaj-'+idItema).on('click', function(){
+
+				var $post = {};
+				$post.title = $('#naslov-'+idItema).val();
+				//console.log($post.title);
+				$post.body = $('#opis-'+idItema).val();
+				$post._token = window._laravel_token;
+				var id = $(this).data('id-itema');
+
+				$naslov.html($('#naslov-'+idItema).val());
+				//console.log($naslov);
+				$opis.html($('#opis-'+idItema).val());
+
+				console.log($post);
+				$.ajax({
+
+					type:'PUT',
+					url:'http://test1.dev/ajax-articles/'+id,
+					data: $post,
+					success: function(data){
+						$save.hide();
+						$cancel.hide();
+						$obrisi.show();
+						$time.html(data.updated_at);
+
+					}
+
+					})
+
+			})
+
+		});
+
+///////////////////////////////////////////////////////
+/*                 AJAX ADD NEW                      */
+///////////////////////////////////////////////////////
 
 		$('button#addnew').on('click', function(){
 			$('#inputi').html('<label> Title: </label> <input type="text" id="naslov"> <label> Body: </label> <textarea id="opis"></textarea> <button class="btn btn-default" id="posalji">Submit</button> <button id="sakrij" class="btn btn-default">Hide</button> ');
@@ -133,7 +199,7 @@
 						$post.title = $('#naslov').val();
 						$post.body = $('#opis').val();
 						$post._token = window._laravel_token;
-						console.log($post);
+						//console.log($post);
 					
 					$.ajax({
 
@@ -144,12 +210,14 @@
 							$('#inputi').html('');
 							var email = window._laravel_user.email;
 
-							var noviRed = $("<tr></tr>");
-							noviRed.append('<td>'+data.title+'</td>');
-							noviRed.append('<td>'+data.body+'</td>');
-							noviRed.append('<td>'+email+'</td>');
+							var noviRed = $("<tr class='js-item-row' data-id-itema='"+data.id+"'></tr>");
+							noviRed.append('<td class="info js-title">'+data.title+'</td>');
+							noviRed.append('<td class="active js-body">'+data.body+'</td>');
+							noviRed.append('<td class="active">'+email+'</td>');
 							noviRed.append('<td>'+data.created_at+'</td>');
-							noviRed.append('<button id="obrisi" class="btn btn-default">Obrisi</button>');
+							noviRed.append('<td class="btn-save"></td>');
+							noviRed.append('<td class="btn-cancel"></td>');
+							noviRed.append('<button class="js-obrisi btn btn-default" data-id-itema="'+data.id+'">Obrisi</button>');
 							$('table').append(noviRed);
 							// $('table tr td#title').append('<tr><td>'+data.title+'</tr></td>');
 							// $('table tr td#body').append('<tr><td>'+data.body+'</tr></td>');
@@ -159,16 +227,20 @@
 				});
 		});
 
-		$('body').on('click', '#obrisi', function(){
+///////////////////////////////////////////////////////
+/*                  AJAX DELETE                      */
+///////////////////////////////////////////////////////
+
+		$('body').on('click', '.js-obrisi', function(){
 			var id = $(this).data('id-itema');
 			var token = $(this).data(token);
 			$.ajax({
 				url:'http://test1.dev/ajax-articles/'+id+'/delete',
 				type: 'delete',
 				data: {method: 'delete', _token:window._laravel_token},
-    			success: function(evt){
-
-    			},
+    			success: function(data){
+    				$("tr[data-id-itema=" + id + "]").hide();
+    			}
 			});
 		})
 

@@ -118,7 +118,11 @@ class ArticleController extends Controller {
 
 	function ajaxArticlesUpdate($id)
 	{
-		$article = Article::find($id);
+		$inputs = Input::all();
+		if(Request::ajax()){
+			$article = Article::find($id);
+			$article->update($inputs);
+		}
 		return $article;
 	}
 
@@ -145,5 +149,6 @@ class ArticleController extends Controller {
 		}
 		return $id;
 	}
+
 
 }
