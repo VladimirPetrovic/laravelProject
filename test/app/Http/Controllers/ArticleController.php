@@ -154,5 +154,9 @@ class ArticleController extends Controller {
 		return view('article.galery');
 	}
 
+	function angular(){
+		return view('article.angular');
+	}
+
 
 }

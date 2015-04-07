@@ -39,6 +39,7 @@
 					<li><a href="{{ url('/ajax-articles') }}">JavaScript</a></li>
 					<li><a href="{{ url('/ispis') }}">Json</a></li>
 					<li><a href="{{ url('/galerija') }}">Galery</a></li>
+					<li><a href="{{ url('/angular') }}">AngularJS</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

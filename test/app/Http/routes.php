@@ -26,6 +26,7 @@ Route::delete('ajax-articles/{id}/delete', 'ArticleController@ajaxArticlesDelete
 
 Route::get('ispis', 'ArticleController@ispisi');
 Route::get('galerija', 'ArticleController@galerija');
+Route::get('angular', 'ArticleController@angular');
 
 // Route::get('article/create', ['as' =>'article.create', 'uses'=>'ArticleController@create']);
 
