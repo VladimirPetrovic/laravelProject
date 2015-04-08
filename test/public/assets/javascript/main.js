@@ -139,8 +139,9 @@
 
 			$naslov.html('<input type="text" size="30" data-id-itema="' + idItema + '" id="naslov-' + idItema + '" >');
 			$opis.html('<input type="text" size="30" data-id-itema="' + idItema + '" id="opis-' + idItema + '" >');
-				$('#naslov-'+idItema).val(tekstNaslova);
-				$('#opis-'+idItema).val(tekstOpisa);
+			$('#naslov-'+idItema).val(tekstNaslova);
+			$('#opis-'+idItema).val(tekstOpisa);
+
 			$save.html('<button data-id-itema="'+idItema+'" id="sacuvaj-'+idItema+'" class="btn btn-primary">Save</button>');
 			$cancel.html('<button data-id-itema="'+idItema+'" id="ponisti-'+idItema+'" class="btn btn-danger">Cancel</button>');		
 			$obrisi.hide();
@@ -155,19 +156,17 @@
 			})
 
 			$('#sacuvaj-'+idItema).on('click', function(){
-
 				var $post = {};
 				$post.title = $('#naslov-'+idItema).val();
 				//console.log($post.title);
 				$post.body = $('#opis-'+idItema).val();
 				$post._token = window._laravel_token;
 				var id = $(this).data('id-itema');
-
 				$naslov.html($('#naslov-'+idItema).val());
 				//console.log($naslov);
 				$opis.html($('#opis-'+idItema).val());
-
 				console.log($post);
+				
 				$.ajax({
 
 					type:'PUT',
