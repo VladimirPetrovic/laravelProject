@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-	<div ng-app='ajaxApp'>
+	<div ng-app='Exams'>
 		<div ng-controller="LabExamsController as labExams">
 			<h3>Waiting exams:</h3><hr/>
 			Search exams:<input type="text" ng-model="text"/>
