@@ -55,7 +55,7 @@
                     </div>
                 @endforeach    
         </table>
-        <button id="addnew" class="btn btn-success test-pop-up">Add new</button>
+        <button id="addnew" class="btn btn-success">Add new</button>
 
         <div id="inputi"></div>
 
@@ -69,9 +69,9 @@
 
 
 @section('scripts')
-    <script type="text/javascript" src="assets/javascript/main.js"></script>      
+    <script type="text/javascript" src="assets/javascript/main.js"></script>   
     <script type="text/javascript">
         window._laravel_token = "{{{ csrf_token() }}}";
         window._laravel_user = {!! $user->toJson() !!};
-    </script>      
+    </script>   
 @endsection

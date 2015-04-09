@@ -40,6 +40,7 @@
 					<li><a href="{{ url('/ispis') }}">Json</a></li>
 					<li><a href="{{ url('/galerija') }}">Galery</a></li>
 					<li><a href="{{ url('/angular') }}">AngularJS</a></li>
+					<li><a href="{{ url('/ajax-angular') }}">Ajax-Angular</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -62,8 +63,10 @@
 	@yield('content')
 
 	<!-- Scripts -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
 
 	@yield('scripts')
 </body>

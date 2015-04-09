@@ -1,14 +1,7 @@
 @extends('app')
 
 @section('content')
-
-	<!doctype html>
-	<html ng-app="Exams">
-		<head>
-			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-			<script src="exam.js"></script>
-		</head>
-	<body>
+	<div ng-app='ajaxApp'>
 		<div ng-controller="LabExamsController as labExams">
 			<h3>Waiting exams:</h3><hr/>
 			Search exams:<input type="text" ng-model="text"/>
@@ -38,14 +31,10 @@
 					</ol>
 			</div>
 		</div>
-	</body>
-	</html>
-
+		</div>
 @endsection
 
 
 @section('scripts')
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-    <script type="text/javascript" src="assets/javascript/exam.js"></script>      
-        
+    <script type="text/javascript" src="assets/javascript/exam.js"></script>     
 @endsection

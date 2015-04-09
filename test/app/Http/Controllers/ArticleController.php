@@ -40,14 +40,14 @@ class ArticleController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-		$inputs = Request::all();
-        $inputs['user_id'] = Auth::user()->id;
-        $article = Article::create($inputs);
+	// public function store()
+	// {
+	// 	$inputs = Request::all();
+ //        $inputs['user_id'] = Auth::user()->id;
+ //        $article = Article::create($inputs);
        
-       return redirect()->route('article.index');
-	}
+ //       return redirect()->route('article.index');
+	// }
 
 	/**
 	 * Display the specified resource.
@@ -151,12 +151,40 @@ class ArticleController extends Controller {
 	}
 
 	function galerija(){
+
 		return view('article.galery');
 	}
 
 	function angular(){
+
 		return view('article.angular');
 	}
 
+	function ajaxAngular(){
+
+		return view('article.ajax-angular');
+	}
+
+	function ajaxAngularDelete($id){
+		$article = Article::findOrFail($id);
+		$article->delete();
+
+		return $article;
+	}
+
+	function ajaxAngularStore(){
+		$inputs = Input::all();
+		$inputs['user_id'] = Auth::user()->id;
+        $article = Article::create($inputs);
+
+		return $article;
+	}
+	function ajaxAngularUpdate($id){
+		
+		$inputs = Input::all();
+		$article = Article::findOrFail($id);
+		$article->update($inputs);
+		return $article;
+	}
 
 }

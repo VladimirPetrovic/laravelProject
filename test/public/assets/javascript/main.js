@@ -34,10 +34,6 @@
 		$('.js-menjaj-poz').on('mouseleave', function(){
 			$('.js-menjaj-poz').css('background-color', 'white')
 		})
-//////////////////////////////////////////////////
-/*               MAGNIFIC POP UP                */
-//////////////////////////////////////////////////
-
 		
 
 //////////////////////////////////////////////////
@@ -208,7 +204,7 @@
 					$.ajax({
 
 						type: "POST",
-						url: 'http://test1.dev/ajax-articles/store',
+						url: 'http://test1.dev/ajax-articles/ajax-store',
 						data: $post,
 						success: function(data){
 							$('#inputi').html('');

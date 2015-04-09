@@ -21,12 +21,17 @@ Route::resource('article', 'ArticleController');
 
 Route::get('ajax-articles', 'ArticleController@ajaxArticles');
 Route::put('ajax-articles/{id}', 'ArticleController@ajaxArticlesUpdate');
-Route::post('ajax-articles/store', 'ArticleController@ajaxArticlesStore');
+Route::post('ajax-articles/ajax-store', 'ArticleController@ajaxArticlesStore');
 Route::delete('ajax-articles/{id}/delete', 'ArticleController@ajaxArticlesDelete');
 
 Route::get('ispis', 'ArticleController@ispisi');
 Route::get('galerija', 'ArticleController@galerija');
+
 Route::get('angular', 'ArticleController@angular');
+Route::get('ajax-angular', 'ArticleController@ajaxAngular');
+Route::delete('ajax-angular/{id}/delete', 'ArticleController@ajaxAngularDelete');
+Route::post('ajax-angular/angular-store', 'ArticleController@ajaxAngularStore');
+Route::put('ajax-angular/angular-update/{id}', 'ArticleController@ajaxAngularUpdate');
 
 // Route::get('article/create', ['as' =>'article.create', 'uses'=>'ArticleController@create']);
 
